@@ -8,11 +8,7 @@ export default function Navbar() {
   const {getCartContext}=useContext(CartContext);
   let{userToken ,setUserToken,userData,setUserData}=useContext(UserContext);
   let navigate=useNavigate();
-  let getCart=async()=>{
-      const res= await getCartContext();
-     return res;
-  }
-  const{data,isLoading}=useQuery("cart",getCart);
+  
 
 
 const  logout=()=>{
@@ -21,11 +17,19 @@ setUserToken(null);
 setUserData(null);
 navigate('/home');
 }
+let getCart=async()=>{
+  const res= await getCartContext();
+ return res;
+}
+const{data,isLoading}=useQuery("cart",getCart);
 
 if(isLoading){
   return(  <p>...Loading</p>
   )
 }
+
+
+
   return (
     <>
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
