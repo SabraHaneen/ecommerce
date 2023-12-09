@@ -1,8 +1,7 @@
 import React, { useContext } from 'react'
 import { useQuery } from 'react-query';
-import ReactImageMagnify from 'react-image-magnify';
 
-import { Link, useParams } from 'react-router-dom'
+import {  useParams } from 'react-router-dom'
 import axios from 'axios';
 import { CartContext } from '../../../context/CartContext';
 
