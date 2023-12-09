@@ -1,7 +1,31 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { UserContext } from '../../../context/UserContext'
+import { CartContext } from '../../../context/CartContext';
+import { useQuery } from 'react-query';
 
 export default function Navbar() {
+  const {getCartContext}=useContext(CartContext);
+  let{userToken ,setUserToken,userData,setUserData}=useContext(UserContext);
+  let navigate=useNavigate();
+  let getCart=async()=>{
+      const res= await getCartContext();
+     return res;
+  }
+  const{data,isLoading}=useQuery("cart",getCart);
+
+
+const  logout=()=>{
+localStorage.removeItem("userToken");
+setUserToken(null);
+setUserData(null);
+navigate('/home');
+}
+
+if(isLoading){
+  return(  <p>...Loading</p>
+  )
+}
   return (
     <>
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -13,24 +37,37 @@ export default function Navbar() {
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav m-auto mb-2 mb-lg-0">
       <li className="nav-item active">
-        <a className="nav-link" href="#">Home </a>
+        <Link className="nav-link" to="/home">Home </Link>
       </li>
       <li className="nav-item">
-        <a className="nav-link" href="#">Categories</a>
+        <Link className="nav-link" to="/categories">Categories</Link>
       </li>
       <li className="nav-item">
         <a className="nav-link" href="#">Products</a>
       </li>
+      {userToken? <><li className='nav-item'>
+        <Link className='nav-link' to="/cart">      Cart   ({data.count!=null?data.count:"(0)"}) 
+ </Link></li></> :null
+        }
+     
       </ul>
       <ul className="navbar-nav"> 
       <li className="nav-item dropdown">
         <a className="nav-link dropdown-toggle" href="#"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Accounts
+          {userData!=null?userData.userName:"Accounts"}
         </a>
         <ul className="dropdown-menu" >
-<li><Link className="dropdown-item" to="/register">register</Link></li>
+      {userToken==null? <><li><Link className="dropdown-item" to="/register">register</Link></li>
 <li><hr className='dropdown-divider'/></li> 
-<li><a className="dropdown-item" href="#">login</a></li>
+<li><Link className="dropdown-item" to="/login">login</Link></li>
+
+</>:<>
+<li><Link className="dropdown-item" to="/userProfile">Profile</Link></li>
+<li><Link className="dropdown-item"  onClick={logout} >logout</Link></li>
+<li><hr className='dropdown-divider'/></li> 
+</>}  
+
+
 
         </ul>
       </li>

@@ -7,50 +7,88 @@ import HomeDashboard from "./../componentes/dashboard/home/Home.jsx";
 import Dashboardlayout from "./Dashboardlayout.jsx";
 import Layout from "./Layout.jsx";
 import Register from '../componentes/web/register/Register.jsx';
+import Login from '../componentes/web/login/Login.jsx';
+import CategoryDetails from '../componentes/web/categories/CategoryDetails.jsx';
+import Product from '../componentes/web/product/Product.jsx';
+import Cart from '../componentes/web/cart/Cart.jsx';
+import ProtectedRoute from '../componentes/protectedRoute/ProtectedRoute.jsx';
+import UserProfile from '../componentes/web/userProfile/UserProfile.jsx';
+import SendCode from '../componentes/web/login/SendCode.jsx';
+import ResetPassword from '../componentes/web/login/ResetPassword.jsx';
 
 
-export const router= createBrowserRouter([
-    {
-      path:"/",
-      element:<Layout/>,
-      children:[
-        {
+export   const router= createBrowserRouter([
+  {
+    path:"/",
+    element:<Layout  />,
+    children:[
+      {
 path:"register",
 element:<Register/>
-        },
-        {
-          path:"home",
-      element:<Home/>,
-        },
-        {
-          path:"categories",
-          element:<Categories/>
-        },
-        {
-          path:'*',
-          element: <h2>404 Web page not found</h2>
-        },
-      ]
-    },
-   
-    {
-      path:'dashboard',
-      element:<Dashboardlayout/>,
-      children:[
-        {
-          path:'home',
-          element:<HomeDashboard/>
-        },
-        {
-          path:'categories',
-          element:<CategoriesDashBoard/>
-        },
-        {
-          path:'*',
-          element: <h2>404 dashboard page not found</h2>
-        },
-  
-      ]
-    }
-  
-  ])
+      },
+      {
+          path:"login",
+          element:<Login />
+                  },
+      {
+        path:"/home",
+    element:<Home/>,
+      },
+      {
+        path:"categories",
+        element:<Categories/>
+      },
+      {
+        path:'categoriesDetails/:categoryId',
+        element:<CategoryDetails/>
+                },
+                {
+                  path:'product/:productId',
+                  element:<Product/>
+                          },
+                          {
+                            path:'userProfile',
+                            element:<UserProfile/>
+                                    },
+                                    {
+                                      path:'sendcode',
+                                      element:<SendCode/>
+                                              },
+                                              {
+                                                path:'resetpass',
+                                                element:<ResetPassword/>
+                                                        },
+
+                          {
+                                                 path:'cart',
+                                                  element:<ProtectedRoute><Cart/></ProtectedRoute>
+                          },
+
+      {
+        path:'*',
+        element: <h2>404 Web page not found</h2>
+      },
+    ]
+  },
+ 
+  {
+    path:'dashboard',
+    element:<Dashboardlayout/>,
+    children:[
+      {
+        path:'home',
+        element:<HomeDashboard/>
+      },
+      {
+        path:'categories',
+        element:<CategoriesDashBoard/>
+      },
+      {
+        path:'*',
+        element: <h2>404 dashboard page not found</h2>
+      },
+
+    ]
+  }
+
+])

@@ -1,0 +1,42 @@
+img{
+    width: 100px;
+    height: 100px;
+  
+
+}
+
+.category{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} /*this class if i want to show name of categories but it's part of the pic*/
+.swiper{
+    padding: 50px;
+}
+
+.swiper-button-prev,.swiper-button-next{
+  background-color: white;
+  color:black;
+  width:40px;
+  height: 40px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.swiper-button-prev:after,.swiper-button-next:after{
+    font-size: 20px;
+}
+.swiper-pagination-bullet{
+    background-color: brown;
+}
+ .swiper-pagination-current{
+    background-color: blue;
+ }
+ .swiper-custom-pagination{
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }

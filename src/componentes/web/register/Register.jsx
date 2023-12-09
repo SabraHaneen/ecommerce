@@ -29,7 +29,7 @@ if(data.message=='success'){
 }
     }
     const handelFieldChange=(event)=>{
-        console.log(event);
+    //    console.log(event);
 formik.setFieldValue('image',event.target.files[0]);
     }
     const formik= useFormik({
