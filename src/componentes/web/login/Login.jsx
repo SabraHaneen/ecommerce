@@ -11,7 +11,7 @@ export default function Login() {
     let{setUserToken,userToken}=useContext(UserContext);
     const navigate=useNavigate();
 if(userToken){
-    navigate(-2);
+    navigate(-1);
 }
     const initialValues={
         email:'',
