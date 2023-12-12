@@ -15,6 +15,10 @@ import ProtectedRoute from '../componentes/protectedRoute/ProtectedRoute.jsx';
 import UserProfile from '../componentes/web/userProfile/UserProfile.jsx';
 import SendCode from '../componentes/web/login/SendCode.jsx';
 import ResetPassword from '../componentes/web/login/ResetPassword.jsx';
+import UserContact from '../componentes/web/userProfile/UserContact.jsx';
+import UserInfo from '../componentes/web/userProfile/UserInfo.jsx';
+import Orders from '../componentes/web/orders/Orders.jsx';
+import ShowOrder from '../componentes/web/orders/ShowOrder.jsx';
 
 
 export   const router= createBrowserRouter([
@@ -31,7 +35,7 @@ element:<Register/>
           element:<Login />
                   },
       {
-        path:"/home",
+index:true,
     element:<Home/>,
       },
       {
@@ -48,7 +52,24 @@ element:<Register/>
                           },
                           {
                             path:'userProfile',
-                            element:<UserProfile/>
+                            element:
+                            <ProtectedRoute>
+                            <UserProfile/>
+                            </ProtectedRoute>,
+                            children:[
+                              {
+                                index:true,
+                            //    path:'info',
+                                element:
+                                <UserInfo/>
+                              },
+                              {
+                                path:'contact',
+                                element:
+                                <UserContact/>
+                              },
+
+                            ]
                                     },
                                     {
                                       path:'sendcode',
@@ -63,6 +84,14 @@ element:<Register/>
                                                  path:'cart',
                                                   element:<ProtectedRoute><Cart/></ProtectedRoute>
                           },
+                          {
+                            path:'orders',
+                             element:<Orders/>
+     },
+     {
+path:'myorder',
+element:<ShowOrder/>
+     },
 
       {
         path:'*',

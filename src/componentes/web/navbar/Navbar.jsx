@@ -6,6 +6,7 @@ import { useQuery } from 'react-query';
 
 export default function Navbar() {
   const {getCartContext}=useContext(CartContext);
+  const{count}=useContext(CartContext);
   let{userToken ,setUserToken,userData,setUserData}=useContext(UserContext);
   let navigate=useNavigate();
   
@@ -50,7 +51,7 @@ if(isLoading){
         <a className="nav-link" href="#">Products</a>
       </li>
       {userToken? <><li className='nav-item'>
-        <Link className='nav-link' to="/cart">      Cart   ({data.count!=null?data.count:"(0)"}) 
+        <Link className='nav-link' to="/cart">      Cart   ({count}) 
  </Link></li></> :null
         }
      

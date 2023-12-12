@@ -18,3 +18,10 @@ export const resetPassSchema=yup.object({
     password:yup.string().required("password is required").min(3,"must be at least 3 char").max(30,"max is 30 char")
 
 })
+export const orderSchema=yup.object({
+
+    address:yup.string().required("address is required").min(4,"must be 4 char").max(30,"max be 30 char"),
+
+    phone:yup.string().required("phone is required").min(9,"must be at least 10 char").max(10,"max is 10 char")
+
+})

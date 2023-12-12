@@ -16,10 +16,11 @@ export default function ResetPassword() {
         password:'',
 
     };
-    const onSubmit = async (userData)=>{
+    const onSubmit = async userData=>{
    
       
-   const {data}= await axios.patch(`${import.meta.env.VITE_API_URL}/auth/forgotPassword`,{email:userData.email,password:userData.password,code:userData.code});
+   const {data}= await axios.patch(`${import.meta.env.VITE_API_URL}/auth/forgotPassword`,userData);
+   //{email:userData.email,password:userData.password,code:userData.code}
       
     
       

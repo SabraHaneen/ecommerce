@@ -1,35 +1,32 @@
 import React, {  useContext } from 'react'
 import { UserContext } from '../../../context/UserContext'
-
+import style from './Profile.module.css'
+import { Link, Outlet } from 'react-router-dom';
 export default function UserProfile() {
-    let{userData}=useContext(UserContext);
+    let{userData,loading}=useContext(UserContext);
 
-
+if(loading){
+  return <p>...loading</p>
+}
   return (
     <>
+<aside className={`${style.profile}`}>
+  <div className={`${style.profileLinks}`}>
+    <nav >
+      <Link to=''>Info</Link>
+      <Link to='contact'>Contact</Link>
 
-
-<div className='container p-5'> 
-
-<div className='row'>
-<div className='col-md-4 flex-column  align-item-center '>
-        <img src={userData!=null?userData.image.secure_url:"no image"} alt="" className='pb-3' />
-   
+    </nav>
+  </div>
+  <div className={`${style.userData}`}>
   
-    </div>
-    <div className='col-md-4 flex-column  align-item-center'>
-    <h2 className='fs-6'>User Name:</h2>
-   <span>{userData!=null?userData.userName:"no data found about user"}</span> 
+    <Outlet/>
+  </div>
   
-    </div>
-    <div className='col-md-4 flex-column pt-2'>
-    <h2 className='fs-6'>User Email:</h2>
-   <span>{userData!=null?userData.email:"no data found about user"}</span> 
-    </div>
-</div>
 
-   
-   </div>
+</aside>
+
+
 
 
 

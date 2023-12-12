@@ -12,8 +12,8 @@ export default function SendCode() {
         email:'',
 
     };
-    const onSubmit = async (userData)=>{
-        const {data}= await axios.patch(`${import.meta.env.VITE_API_URL}/auth/sendcode`,{email:userData.email});
+    const onSubmit = async userData=>{
+        const {data}= await axios.patch(`${import.meta.env.VITE_API_URL}/auth/sendcode`,userData);
 console.log(data.message);
               if(data.message=='success'){
                  toast.success('will send u a code ', {
