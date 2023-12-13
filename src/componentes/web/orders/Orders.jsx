@@ -6,10 +6,8 @@ import { orderSchema } from '../../../validation/validate';
 import Input from '../../pages/Input';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
 
 export default function Orders() {
-    const navigate=useNavigate();
 
     const {getCartContext}=useContext(CartContext);
 
@@ -54,7 +52,6 @@ export default function Orders() {
 
                  } 
     
-                         navigate('/myorder');
 
                
                  

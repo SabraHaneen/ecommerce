@@ -68,6 +68,10 @@ index:true,
                                 element:
                                 <UserContact/>
                               },
+                              {
+                                path:'myorder',
+                                element:<ShowOrder/>
+                                     },
 
                             ]
                                     },
@@ -88,10 +92,7 @@ index:true,
                             path:'orders',
                              element:<Orders/>
      },
-     {
-path:'myorder',
-element:<ShowOrder/>
-     },
+  
 
       {
         path:'*',

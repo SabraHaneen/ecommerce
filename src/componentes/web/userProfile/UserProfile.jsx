@@ -12,9 +12,11 @@ if(loading){
     <>
 <aside className={`${style.profile}`}>
   <div className={`${style.profileLinks}`}>
-    <nav >
+    <nav className='pt-5' >
       <Link to=''>Info</Link>
       <Link to='contact'>Contact</Link>
+      <Link to='myorder'>My Order</Link>
+
 
     </nav>
   </div>
