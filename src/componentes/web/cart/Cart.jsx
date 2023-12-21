@@ -5,10 +5,12 @@ import { useQuery } from 'react-query';
 import { Link } from 'react-router-dom';
 
 export default function () {
+
 const {getCartContext,removeCartItem,decrementQuntity,incrementQuntity,clearCart}=useContext(CartContext);
     const getCart=async()=>{
         const res= await getCartContext();
-     //   console.log(res);
+   //  console.log(res.products);
+
        return res;
     }
 const removeItem=async(productId)=>{
@@ -18,7 +20,6 @@ const removeItem=async(productId)=>{
 }
 const decCount=async(productId)=>{
   const res=await decrementQuntity(productId);
-
   
 
   return res;
@@ -70,7 +71,7 @@ const clearAllCart=async()=>{
     <div className="product-details">
       <h2>{product.details.name}</h2>
       <span>Color:black</span>
-      <a href="#" onClick={()=>removeItem(product.details._id)}>
+      <a href="#" onClick={()=>removeItem(product.details._id)} className='remove '>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width={24}
@@ -130,8 +131,8 @@ const clearAllCart=async()=>{
 </div>
 
 )):<p>no data found</p>}
-            <div className='text-end'>
-            <button className='btn btn-outline-danger w-25 ' onClick={clearAllCart} >Clear Cart</button>
+            <div className='text-end p-3'>
+            <button className='clearbtn rounded-pill' onClick={clearAllCart} >Clear Cart</button>
 
 
             </div>
@@ -159,16 +160,14 @@ const clearAllCart=async()=>{
                   </div>
                   <span>%21.00</span>
                 </div>
-                <div className="summary-footer">
-                  <label>Subtotal</label>
-                  <span>$1234.00</span>
-                </div>
+               
                 <div className="summary-footer">
                   <label className="total">Total</label>
-                  <span>$1345.00</span>
+                
+                 <span>total=</span>
                 </div>
-                <div className="checkout">
-                <Link className='btn w-100 '  to='/orders' >Check out</Link>
+                <div className="checkout pt-5">
+                <Link className='checkbtn '  to='/orders' >Check out</Link>
                 </div>
               </div>
             </div>

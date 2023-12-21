@@ -41,7 +41,7 @@ export default function Orders() {
                   if(data.message=='success'){
                      toast.success('your order send ', {
                          position: "top-right",
-                         autoClose: false,
+                         autoClose: 4000,
                          hideProgressBar: false,
                          closeOnClick: true,
                          pauseOnHover: true,
@@ -109,9 +109,10 @@ export default function Orders() {
   return (
     <>
     <div className="cart">
-      <div className="container">
+      <div className="container ">
+        <h2 className='text-center py-4'>Let's Complete Your Order</h2>
         <div className="row">
-          <div className="cart-items">
+          <div className="cart-items ">
             <div className="products" id="products">
               <div className="item">
                 <div className="product-info">
@@ -157,15 +158,14 @@ export default function Orders() {
           </div>
         
         </div>
-      </div>
-    </div>
+     
     
-    <form className="row g-3 flex-column  align-content-center" onSubmit={formik.handleSubmit}  >
+    <form className="row g-3   " onSubmit={formik.handleSubmit}  >
 <div className="col-auto text-start pb-5 ps-4">
     <label >complety your order</label>
   </div>
-  <div className='row'>
-<div className='col-md-4'>
+  <div className='row '>
+<div className='col-md-4 '>
 {renderInputs}
 
 </div>
@@ -176,6 +176,8 @@ export default function Orders() {
     <button type="submit" className="btn btn-primary mb-3" disabled={!formik.isValid}>send order</button>
   </div>
 </form>
+</div>
+    </div>
     
     </>  )
 }

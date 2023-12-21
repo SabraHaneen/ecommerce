@@ -45,7 +45,10 @@ if(isLoading){
   return <p>...loading</p>
 }
   return (
-    <div className='container'>
+    <>
+    <div className='auto-container gategorystyle py-2'>
+    <div className='text-center gategorystyletext pt-3'><h1>...Gategories...</h1></div>
+
        <Swiper
              modules={[Navigation, Pagination,Autoplay]}
 
@@ -75,9 +78,10 @@ if(isLoading){
       </SwiperSlide>
       ):'no categories found' }
     </Swiper>
-    <div className='swiper-custom-pagination'></div>
+    <div className='swiper-custom-pagination pb-5'></div>
 
 
 </div>
+</>
   )
 }

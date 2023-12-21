@@ -10,23 +10,28 @@ if(loading){
 }
   return (
     <>
+    <div className='container row  py-4'>
+      <div className='col-md-4 '>
 <aside className={`${style.profile}`}>
-  <div className={`${style.profileLinks}`}>
-    <nav className='pt-5' >
-      <Link to=''>Info</Link>
-      <Link to='contact'>Contact</Link>
-      <Link to='myorder'>My Order</Link>
+   <div className={`${style.profileLinks}`}>
+    <nav className={`${style.linkstyle}`} >
+      <Link to='' className='text-decoration-none'><span>Info</span></Link>
+      <Link to='contact' className='text-decoration-none'><span>Contact</span></Link>
+      <Link to='myorder' className='text-decoration-none'><span>My Order</span></Link>
 
 
     </nav>
   </div>
-  <div className={`${style.userData}`}>
   
-    <Outlet/>
-  </div>
-  
-
 </aside>
+</div>
+ <div className='col-md-8 d-flex justify-content-center pt-5 '> <div className={`${style.userData}`}>
+  
+  <Outlet/>
+</div></div>
+
+</div>
+  
 
 
 

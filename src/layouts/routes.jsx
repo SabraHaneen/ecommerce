@@ -19,6 +19,8 @@ import UserContact from '../componentes/web/userProfile/UserContact.jsx';
 import UserInfo from '../componentes/web/userProfile/UserInfo.jsx';
 import Orders from '../componentes/web/orders/Orders.jsx';
 import ShowOrder from '../componentes/web/orders/ShowOrder.jsx';
+import ShowProduct from '../componentes/web/product/ShowProduct.jsx';
+import Search from '../componentes/web/search/Search.jsx';
 
 
 export   const router= createBrowserRouter([
@@ -34,6 +36,10 @@ element:<Register/>
           path:"login",
           element:<Login />
                   },
+                  {
+                  path:"search",
+                  element:<Search />
+                          },
       {
 index:true,
     element:<Home/>,
@@ -74,6 +80,10 @@ index:true,
                                      },
 
                             ]
+                                    },
+                                    {
+path:'showproduct',
+element:<ShowProduct/>
                                     },
                                     {
                                       path:'sendcode',

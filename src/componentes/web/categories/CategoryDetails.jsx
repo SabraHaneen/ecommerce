@@ -20,17 +20,18 @@ export default function CategoryDetails() {
    }
   return (
     <div className='products container p-5'>
+        <div><h3>in men section you can find what ever you'r looking for</h3></div>
          <div className='row '>
         {data.length?data.map((product)=>
-        <div className='product col-md-4  ' key={product._id}>
+        <div className='product col-md-4   ' key={product._id}>
        <div className='row '>
         <div className='col-md-4 '>
         <img src={product.mainImage.secure_url}/>
         </div>
-        <div className='col-md-8'>
+        <div className='col-md-4'>
 
-            <h6 className='fs-6 pb-2'>{product.name}</h6> 
-            <Link to={`/product/${product._id}`}>Detailes</Link>
+            <p className='fs-6 pb-2'>{product.name}</p> 
+            <Link to={`/product/${product._id}`} className='detialesstyle'>Detailes</Link>
 
             </div>
       
@@ -41,6 +42,5 @@ export default function CategoryDetails() {
 
         ): <h2>no products found</h2>}
     </div>
-    </div>
-  )
-}
+</div>
+  )}

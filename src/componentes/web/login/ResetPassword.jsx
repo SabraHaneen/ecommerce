@@ -7,6 +7,8 @@ import { useFormik } from 'formik';
 import Input from '../../pages/Input';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import style from './Login.module.css';
+
 
 export default function ResetPassword() {
     const navigate=useNavigate();
@@ -28,7 +30,7 @@ export default function ResetPassword() {
          
             toast.success('your password reset succesfully ', {
                 position: "top-right",
-                autoClose: false,
+                autoClose: 3000,
                 hideProgressBar: false,
                 closeOnClick: true,
                 pauseOnHover: true,
@@ -98,18 +100,27 @@ export default function ResetPassword() {
 
   return (
 <>
+<div className='container'>
+    <h2 className='pt-5 text-center'>Enter Your new Password</h2>
+    <div className='row text-center  d-flex justify-content-center align-items-center py-3  '>
+        < div className='d-flex justify-content-center align-items-center  w-25 rounded-3 py-4 bg-danger-subtle '>
 <form className="row g-3 flex-column  align-content-center" onSubmit={formik.handleSubmit}  >
 <div className="col-auto text-center">
-    <label >Reset Your Password</label>
+    <label ></label>
   </div>
 {renderInputs}
 
  
-  <div className="col-auto text-center">
-    <button type="submit" className="btn btn-primary mb-3" disabled={!formik.isValid}>Reset Password</button>
+  <div className="col-auto text-center  d-flex justify-content-center align-items-center">
+    <button type="submit" className={`${style.loginbtn}`} disabled={!formik.isValid}>Reset Password</button>
   </div>
 </form>
-
+</div>
+        
+   
+        </div>
+      
+    </div>
 
 
 </>

@@ -1,14 +1,17 @@
 import axios from 'axios';
 import React from 'react'
 import { useQuery } from 'react-query';
+import style from './Order.module.css'
+
 
 export default function ShowOrder() {
+  let ordernumber=0;
     const getOrders= async()=>{
         try{
             const token=localStorage.getItem("userToken");
             const {data}= await axios.get(`${import.meta.env.VITE_API_URL}/order`,
 {headers:{Authorization:`Tariq__${token}`}});
-console.log(data.orders);
+//console.log(data.orders);
             return data;
 
         }
@@ -24,38 +27,42 @@ console.log(data.orders);
      return (
 
     <>
+ <h2 className='text center p-5  text-center'>Your Orders</h2>
+
     
- <h2 className='text center p-5 text-info text-center'>Your Orders</h2>
- {data?.orders.length?(data.orders.map((order)=>
- <div className="item container d-flex row ps-5" key={order._id}>
- 
- <div className="order-info d-flex flex-row col-md-2 ps-5" >
- <h6 >Final Price :</h6>
-   <p className='ps-4 pb-1' >{order.finalPrice}</p>
-  
- </div>
- <div className="order-info d-flex flex-row col-md-3 ps-5" >
- <h6 >Address Info:</h6>
-   <p className='ps-2 pb-3' >{order.address}</p>
-   <p className='ps-2 pb-3' >{order.phoneNumber}</p>
+<table className="table p-5">
+  <thead >
 
-  
- </div>
- <div className="order-info d-flex flex-row col-md-3 ps-5" >
- <h6 >Order Status :</h6>
-   <p className='ps-2 pb-3' >{order.status}</p>
+    <tr>
+      <th scope="col" >Order#</th>
+      <th scope="col">address</th>
+      <th scope="col">phoneNumber</th>
+      <th scope="col">Final price</th>
 
-  
- </div>
- <div className="order-info d-flex flex-row col-md-3 ps-5" >
- <h6 >payment Type  :</h6>
-   <p className='ps-2 pb-3' >{order.paymentType}</p>
+      <th scope="col">Paymenet type</th>
+      <th scope="col">order status</th>
 
+
+    </tr>
   
- </div>
-</div>
-)):<p>no data found</p>}
+
+  </thead>
+  <tbody className={`${style.tabletext}`}>
+  {data?.orders.length?(data.orders.map((order)=>
+    <tr key={order._id}>
+      <th scope="row">{ordernumber++}</th>
+      <td>{order.address}</td>
+      <td>{order.phoneNumber}</td>
+      <td>{order.finalPrice}</td>
+      <td>{order.paymentType}</td>
+      <td>{order.status}</td>
+    </tr>
     
+    )):<p>no data found</p>}
+  </tbody>
+</table>
+
+
     </>
   )
 }

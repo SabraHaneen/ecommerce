@@ -4,6 +4,7 @@ import { useFormik } from 'formik';
   import { registerSchema } from '../../../validation/validate';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import style from '../login/Login.module.css'
 
 export default function Register() {
   
@@ -18,7 +19,7 @@ if(data.message=='success'){
     formik.resetForm();
     toast.success('Account created succesfully,plz verify your email to login', {
         position: "bottom-center",
-        autoClose: false,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -104,19 +105,21 @@ onChange: handelFieldChange,
     )
   return (
 <>
-<div className='container'>
-    <h2 className='pb-3'>Create Account</h2>
-    <div className='row text-center'>
-        <div className='col-md-12'>
+<div className={`${style.backimg}`}>
+    <div className='container mt-5  pt-5 ' >
+    <h2 className='pb-3 text-center text-capitalize '>Create Account</h2>
+<div className='row d-flex justify-content-center'>
+        <div className='col-md-6  text-center '>
         <form onSubmit={formik.handleSubmit} encType="multipart/form-data" >
         {renderInputs}
-        <div className='text-center'>     
-               <button type='submit' className='btn rounded-pill text-black ' disabled={!formik.isValid}>Register</button>
+        <div className='text-center d-flex justify-content-center pb-5'>  
+        <button type='submit'className={`${style.loginbtn}`} disabled={!formik.isValid}>Register</button>
+   
 </div>
 
     </form>
         </div>
-   
+        </div>
     </div>
   
 </div>

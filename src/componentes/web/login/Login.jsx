@@ -6,6 +6,8 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../../../context/UserContext';
+import style from './Login.module.css';
+
 
 export default function Login() {
     let{setUserToken,userToken}=useContext(UserContext);
@@ -29,7 +31,7 @@ if(data.message=='success'){
     setUserToken(data.token);
     toast.success('Account login succesfully', {
         position: "top-right",
-        autoClose: false,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -87,20 +89,20 @@ vlaue: formik.values.password,
   return (
 <>
 <div className='container'>
-    <h2 className='pb-3'>Login Account</h2>
-    <div className='row text-center'>
-        <div className='col-md-12'>
+    <h2 className='pt-5 text-center'>Login Account</h2>
+    <div className='row text-center  d-flex justify-content-center align-items-center py-3  '>
+        <div className={`${style.loginbackimg}`}>
         <form onSubmit={formik.handleSubmit}  >
         {renderInputs}
-        <div className='text-center'>     
-               <button type='submit' className='btn rounded-pill text-black ' disabled={!formik.isValid}>login</button>
+        <div className='d-flex justify-content-center align-items-center'>     
+               <button type='submit'className={`${style.loginbtn}`} disabled={!formik.isValid}>login</button>
 </div>
-
+<div className='forgotPass col-md-12 pt-2'>
+            <Link to="/sendcode" className={`${style.loginbtn}`}>Forgot My Password</Link>
+        </div>
     </form>
         </div>
-        <div className='forgotPass col-md-12 pt-5'>
-            <Link to="/sendcode">Forgot My Password</Link>
-        </div>
+        
    
     </div>
   

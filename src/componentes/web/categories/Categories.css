@@ -40,3 +40,38 @@ img{
     justify-content: center;
     align-items: center;
  }
+ .gategorystyle{
+    background-color:rgb(190, 190, 230) ;
+
+ }
+ .gategorystyletext{
+    font-family:cursive;
+   color: rgb(255, 255, 255)!important;
+ }
+ .detialesstyle{
+    text-decoration: none;
+    font-family:cursive;
+    color: rgb(55, 55, 101)!important;
+    border: 2px solid rgb(55, 55, 101);
+    padding: .3rem;
+display: flex;
+flex-direction: row;
+justify-content: center;
+ }
+ p{
+    font-family:cursive;
+font-size: 15px;
+color: rgb(55, 55, 101)!important;
+ }
+ h3{
+    font-family:cursive;
+font-size:18px;
+text-align: center;
+padding: 18px;
+color: rgb(80, 80, 125) !important; 
+ }
+ .detialesstyle:hover{
+    color: rgb(255, 255, 255)!important;
+    border: 3px solid rgb(55, 55, 101);
+    background-color:rgb(55, 55, 101) ;  
+ }

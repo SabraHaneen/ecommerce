@@ -1,14 +1,18 @@
 .profile{
     display: flex;
-    gap: 40px;
-    height: 100px;
-}
-.profileLinks{
+flex-direction: row;    gap: 40px;
+    height: 100vh;
     width: 300px;
-
+    padding-top: 40px;
+justify-content: center; 
+   background-color: rgb(148, 125, 168);
 }
+
+
+
 .userData{
-    flex-grow: 1;
+    flex-grow: 1; 
+
 }
 .profileLinks nav{
     height: calc(100dvh-60px);
@@ -20,4 +24,9 @@
 a{
     color: #fff;
     text-decoration: none;
+}
+.textstyle,span{
+    font-family: cursive;
+    color: rgb(72, 72, 110)!important;
+    padding-left: 10px;
 }

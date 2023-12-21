@@ -8,8 +8,11 @@ export default function UserContact() {
     }
   return (
     <>
+    <div className='d-flex flex-column justify-content-start'>
     <h2>{userData.email}</h2>
-    <h3>no phone number</h3>
+    <h2>no phone number</h2>
+    </div>
+   
     </>
   )
 }
